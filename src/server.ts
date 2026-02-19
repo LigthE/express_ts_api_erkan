@@ -20,7 +20,8 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
-  } catch (error) {
+  } catch (error) {//den hanterar error ifall de blir error jag får sms failed 
+    //annars det blir ingen fara 
     console.error("Failed to connect to the database:", error);
     process.exit(1);
   }
