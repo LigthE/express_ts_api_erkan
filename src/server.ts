@@ -2,14 +2,12 @@ import dotenv from "dotenv";
 import { createApp } from "./app";
 
 dotenv.config();
+const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
 
 const startServer = async () => {
   try {
-    // testar database connect
-
-    // Starta servern
-    const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
     const app = createApp();
+
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
@@ -22,11 +20,3 @@ const startServer = async () => {
 };
 
 startServer();
-
-const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
-
-const app = createApp();
-
-app.listen(PORT, () => {
-  console.log(`server running on http://localhost:${PORT}`);
-});

@@ -10,7 +10,7 @@ export const getUsers = async (
 ) => {
   try {
     const users = await getAllUsers();
-
+    console.log(users);
     if (!users) {
       return res.status(404).json({ status: "no users found" });
     }
