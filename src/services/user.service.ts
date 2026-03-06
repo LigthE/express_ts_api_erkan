@@ -35,3 +35,36 @@ export const createUserService = async (data: CreateUserTypeZ) => {
     },
   });
 };
+
+export const getUserByIdService = async (id: number) => {
+  const user = await prisma.user.findUnique({
+    where: { id: id },
+    select: {
+      firstname: true,
+      lastname: true,
+      email: true,
+      password: true,
+    },
+  });
+  return user;
+};
+
+export const updateUserService = async (id: number, data: CreateUserTypeZ) => {
+  const users = await prisma.user.update({
+    where: { id: id },
+    data: {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      email: data.email,
+      password: data.password,
+    },
+  });
+  return users;
+};
+
+export const deleteUserById = async (id: number) => {
+  const user = await prisma.user.delete({
+    where: { id: id },
+  });
+  return user;
+};
