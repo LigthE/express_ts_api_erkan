@@ -1,11 +1,18 @@
 import express, { type Request, type Response } from "express";
-import { timeStamp } from "node:console";
+import userRoutes from "./routes/user.routes";
+import { errorHandler } from "./middleware/error.middleware";
 
 export const createApp = () => {
   const app = express();
 
   app.use(express.json());
+
+  app.use("/api/users", userRoutes);
+
+  app.use(errorHandler);
+
   app.get("/health", (req: Request, res: Response) => {
+    void req;
     res.status(200).json({ status: "ok", timeStamp: new Date().toISOString() });
   });
 
